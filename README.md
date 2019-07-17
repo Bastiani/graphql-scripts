@@ -4,12 +4,12 @@
 yarn global add @babel/core @babel/node
 ```
 
-First and one time execute
-
+First and one time execute:
 ```bash
 npm link
 ```
 
+After:
 ```bash
 graphql-module
 ```
