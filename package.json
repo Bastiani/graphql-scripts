@@ -21,5 +21,8 @@
   },
   "scripts": {
     "start": "babel-node ./src/index.js"
+  },
+  "bin": {
+    "graphql-module": "./src/index.js"
   }
 }

@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env babel-node
 import inquirer from "inquirer";
 import chalk from "chalk";
 import figlet from "figlet";
@@ -96,10 +96,10 @@ const run = async () => {
   const { MODULE, PROJECT_DIR } = answers;
 
   // create the file
-  const filePath = createFiles(MODULE, PROJECT_DIR);
+  createFiles(MODULE, PROJECT_DIR);
 
   // show success message
-  success(filePath);
+  success(PROJECT_DIR);
 };
 
 run();
