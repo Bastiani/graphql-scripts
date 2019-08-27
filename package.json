@@ -13,16 +13,20 @@
     "shelljs": "^0.8.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.4",
     "@babel/node": "^7.5.0",
     "@babel/plugin-proposal-class-properties": "^7.5.0",
     "@babel/preset-env": "^7.5.4",
-    "eslint": "^6.0.1"
+    "eslint": "^6.0.1",
+    "rimraf": "^2.6.3"
   },
   "scripts": {
-    "start": "babel-node ./src/index.js"
+    "clean": "rimraf lib",
+    "start": "babel-node ./src/index.js",
+    "build": "npm run clean && mkdir -p lib && ./node_modules/.bin/babel src -s -D -d lib"
   },
   "bin": {
-    "graphql-module": "./src/index.js"
+    "graphql-module": "./lib/index.js"
   }
 }

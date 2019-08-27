@@ -1,0 +1,37 @@
+import {
+  GraphQLObjectType,
+  GraphQLNonNull,
+  GraphQLString,
+  GraphQLBoolean
+} from 'graphql';
+
+import { globalIdField } from 'graphql-relay';
+
+import { connectionDefinitions } from '../../core/connection/CustomConnectionType';
+import { registerType, nodeInterface } from '../../interface/NodeInterface';
+
+const TemplateType = registerType(
+  new GraphQLObjectType({
+    name: 'Template',
+    description: 'Template type definition',
+    fields: () => ({
+      id: globalIdField('Template'),
+      _id: {
+        type: GraphQLString,
+        resolve: template => template._id
+      },
+      active: {
+        type: GraphQLBoolean,
+        description: 'Active of the template'
+      }
+    }),
+    interfaces: () => [nodeInterface]
+  })
+);
+
+export const TemplateConnection = connectionDefinitions({
+  name: 'Template',
+  nodeType: GraphQLNonNull(TemplateType)
+});
+
+export default TemplateType;

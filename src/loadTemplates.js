@@ -1,78 +1,68 @@
-import shell from "shelljs";
+import shell from 'shelljs';
 
-import { capitalize, lowercase } from "./utils";
+import { capitalize, lowercase } from './utils';
 
 const loadTemplates = (module, projectDir) => {
   // Loader
   shell
-    .cat(`${__dirname}/templates/TemplateLoader.js`)
-    .to(
-      `${projectDir}/modules/${capitalize(module)}/${capitalize(
-        module
-      )}Loader.js`
-    );
+    .cat(`${__dirname}/templates/TemplateLoader.txt`)
+    .to(`${projectDir}/modules/${module}/${capitalize(module)}Loader.ts`);
   shell.sed(
-    "-i",
+    '-i',
     /\*?Template/g,
     `${capitalize(module)}`,
-    `${projectDir}/modules/${capitalize(module)}/${capitalize(module)}Loader.js`
+    `${projectDir}/modules/${module}/${capitalize(module)}Loader.ts`
   );
   shell.sed(
-    "-i",
-    "templates",
+    '-i',
+    'templates',
     `${lowercase(module)}s`,
-    `${projectDir}/modules/${capitalize(module)}/${capitalize(module)}Loader.js`
+    `${projectDir}/modules/${module}/${capitalize(module)}Loader.ts`
   );
 
   // Model
   shell
-    .cat(`${__dirname}/templates/TemplateModel.js`)
-    .to(
-      `${projectDir}/modules/${capitalize(module)}/${capitalize(
-        module
-      )}Model.js`
-    );
+    .cat(`${__dirname}/templates/TemplateModel.txt`)
+    .to(`${projectDir}/modules/${module}/${capitalize(module)}Model.ts`);
   shell.sed(
-    "-i",
+    '-i',
     /\*?Template/g,
     `${capitalize(module)}`,
-    `${projectDir}/modules/${capitalize(module)}/${capitalize(module)}Model.js`
+    `${projectDir}/modules/${module}/${capitalize(module)}Model.ts`
   );
 
   // Type
   shell
-    .cat(`${__dirname}/templates/TemplateType.js`)
-    .to(
-      `${projectDir}/modules/${capitalize(module)}/${capitalize(module)}Type.js`
-    );
+    .cat(`${__dirname}/templates/TemplateType.txt`)
+    .to(`${projectDir}/modules/${module}/${capitalize(module)}Type.ts`);
   shell.sed(
-    "-i",
+    '-i',
     /\*?Template/g,
     `${capitalize(module)}`,
-    `${projectDir}/modules/${capitalize(module)}/${capitalize(module)}Type.js`
+    `${projectDir}/modules/${module}/${capitalize(module)}Type.ts`
   );
 
   // MutationAdd
   shell
     .cat(`${__dirname}/templates/TemplateAddMutation.js`)
     .to(
-      `${projectDir}/modules/${capitalize(module)}/mutations/${capitalize(
+      `${projectDir}/modules/${module}/mutations/${capitalize(
         module
       )}AddMutation.js`
     );
   shell.sed(
-    "-i",
+    '-i',
     /\*?Template/g,
     `${capitalize(module)}`,
-    `${projectDir}/modules/${capitalize(module)}/mutations/${capitalize(
+    `${projectDir}/modules/${module}/mutations/${capitalize(
       module
     )}AddMutation.js`
   );
   shell.sed(
-    "-i",
+    '-i',
     /\*?template/g,
     `${lowercase(module)}`,
-    `${projectDir}/modules/${capitalize(module)}/mutations/${capitalize(
+    `${projectDir}/modules/${module}/mutations/${capitalize(
       module
     )}AddMutation.js`
   );
@@ -81,23 +71,23 @@ const loadTemplates = (module, projectDir) => {
   shell
     .cat(`${__dirname}/templates/TemplateEditMutation.js`)
     .to(
-      `${projectDir}/modules/${capitalize(module)}/mutations/${capitalize(
+      `${projectDir}/modules/${module}/mutations/${capitalize(
         module
       )}EditMutation.js`
     );
   shell.sed(
-    "-i",
+    '-i',
     /\*?Template/g,
     `${capitalize(module)}`,
-    `${projectDir}/modules/${capitalize(module)}/mutations/${capitalize(
+    `${projectDir}/modules/${module}/mutations/${capitalize(
       module
     )}EditMutation.js`
   );
   shell.sed(
-    "-i",
+    '-i',
     /\*?template/g,
     `${lowercase(module)}`,
-    `${projectDir}/modules/${capitalize(module)}/mutations/${capitalize(
+    `${projectDir}/modules/${module}/mutations/${capitalize(
       module
     )}EditMutation.js`
   );

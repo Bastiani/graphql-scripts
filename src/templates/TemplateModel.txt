@@ -1,0 +1,26 @@
+import mongoose, { Document, Model } from 'mongoose';
+
+const Schema = new mongoose.Schema(
+  {
+    active: {
+      type: Boolean,
+      default: true,
+      required: true
+    }
+  },
+  {
+    timestamps: {
+      createdAt: 'createdAt',
+      updatedAt: 'updatedAt'
+    },
+    collection: 'Template'
+  }
+);
+
+export interface ITemplate extends Document {
+  active: boolean;
+}
+
+const TemplateModel: Model<ITemplate> = mongoose.model('Template', schema);
+
+export default TemplateModel;
